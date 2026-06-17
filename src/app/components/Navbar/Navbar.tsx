@@ -5,8 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import styles from './Navbar.module.css'
 
 const navLinks = [
-  { label: 'Work', href: '#work' },
+  { label: 'About', href: '#about' },
   { label: 'Service', href: '#expertise' },
+  { label: 'Work', href: '#work' },
   { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -20,12 +21,15 @@ export default function Navbar() {
 
   // Detect mobile screen size
   useEffect(() => {
-    setIsMobile(window.innerWidth <= 768)
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768)
     }
+    const timer = setTimeout(handleResize, 0)
     window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener('resize', handleResize)
+    }
   }, [])
 
   // Listen to window scroll to shrink/expand island
@@ -41,7 +45,9 @@ export default function Navbar() {
   useEffect(() => {
     const saved = localStorage.getItem('theme')
     if (saved === 'dark') {
-      setIsDark(true)
+      setTimeout(() => {
+        setIsDark(true)
+      }, 0)
       document.documentElement.classList.add('dark')
     }
   }, [])

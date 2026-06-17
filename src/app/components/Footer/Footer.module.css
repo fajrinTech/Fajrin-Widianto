@@ -58,3 +58,27 @@
     padding-bottom: 96px; /* Extra spacing to prevent overlap with the floating bottom capsule menu */
   }
 }
+
+.toast {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  padding: 14px 22px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  backdrop-filter: var(--glass-blur);
+  z-index: 1000;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+}
+
+:global(.dark) .toast {
+  background: rgba(20, 20, 20, 0.85);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
