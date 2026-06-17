@@ -1,36 +1,129 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# 🌌 Fajrin Widianto — Portfolio
+### **Full-Stack Developer & UI/UX Designer**
 
-First, run the development server:
+*An interactive, high-fidelity personal portfolio crafted using Next.js, Framer Motion, and WebGL, showcasing premium Apple HIG design concepts, interactive widgets, and fluid micro-interactions.*
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+[![Next.js](https://img.shields.io/badge/Next.js-15-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React-19-20232a?style=for-the-badge&logo=react&logoColor=61dafb)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-007acc?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-11-ff00c8?style=for-the-badge&logo=framer&logoColor=white)](https://framer.com/motion)
+[![WebGL](https://img.shields.io/badge/WebGL-2.0-990000?style=for-the-badge&logo=webgl&logoColor=white)](https://khronos.org/webgl)
+
+</div>
+
+---
+
+## 🎨 Design Philosophy — Luminous Monolith
+The portfolio is designed with a premium **Luminous Monolith** theme, inspired by **Apple's Human Interface Guidelines (HIG)** and modern glassmorphism. It leverages fine visual borders, soft glowing states, subtle background shaders, and satisfying spring physics to create an organic, tactile experience.
+
+---
+
+## ✨ Core Interactive Features
+
+### 1. 📱 Scroll-Responsive Dynamic Island
+An iOS-inspired floating navigation bar that morphs dynamically based on viewport actions:
+*   **At Top**: Renders as a full glass navigation menu with links, theme toggles, and CTAs.
+*   **Scrolled Down**: Collapses into a minimal black capsule pill containing a pulsing activity indicator.
+*   **Tactile Expansion**: Hovering (desktop) or tapping (mobile) expands the pill back into navigation.
+*   **Touchscreen Protection**: Configured with smart event checking to ignore emulated hover sticking on mobile devices.
+
+### 2. 🎛️ Apple-Style Bento Grid
+A pixel-perfect, 12-column asymmetric grid layout showcasing real engineering case studies and interactive widgets, with unified heights and flex-stretching cover mockups:
+*   **Kaloriku (Capstone Project)**: Replaces placeholder items with a real DBS Foundation x Dicoding capstone, featuring a dedicated Backend description.
+*   **SaaS Platform & E-commerce App**: Seamlessly proportioned grids.
+*   **Collaboration Card**: Full-width footer CTA with active email link elements.
+
+### 3. 🧩 Interactive Playground Widgets
+*   **GitHub Activity Board**: A custom 12x7 contribution calendar containing 84 cells. Hovering over active cells reveals a tooltip with funny log commits.
+*   **Terminal Sandbox**: A mock Bash test runner that runs unit tests asynchronously on tap, rendering incremental logs with a blinking cursor.
+
+### 4. ⚡ Skill Glow Grid
+A skill catalog grouped into Frontend, Backend, and Tooling. Hovering cards activates brand-specific neon glows (e.g. cyan for React, green for Node, orange-red for Git) while restoring grayscale icons back to full brand saturation.
+
+### 5. 🌗 LERP WebGL Theme Transitions
+*   **Sun/Moon Toggle**: An animated toggle using rotational springs (`stiffness: 320`) and scaling states.
+*   **Shader Morphing**: Triggering light/dark mode triggers a Linear Interpolation (LERP) loop inside a custom GPU fragment shader, blending background colors smoothly over 0.5s instead of flipping instantly.
+
+### 6. 📖 Challenge-Based Learning (CBL) Popups
+Clicking on any project opens a premium overlay detailed in Apple's **Challenge-Based Learning** storytelling format:
+*   **Overview**: Summary of the capstone project scope.
+*   **Challenge**: The technical and architecture hurdles.
+*   **Investigation**: Benchmarks and research methodologies.
+*   **Solution (Act)**: Technical deployment details, APIs, and cloud deployments.
+*   *Supports Esc-key closing, backdrop blur (`backdrop-filter: blur(16px)`), and scroll-locking.*
+
+---
+
+## 🛠️ Tech Stack & Services
+
+| Category | Technologies |
+| :--- | :--- |
+| **Frontend Core** | React 19, Next.js 15 (App Router), TypeScript |
+| **Styling & UI** | CSS Modules (Vanilla), TailwindCSS, Apple HIG Glassmorphic Tokens |
+| **Animation Engine** | Framer Motion (Spring-physics layout animations) |
+| **Graphics & Shader** | WebGL 2.0 (Custom GLSL fragment shader, LERP animation) |
+| **Backend & Databases** | Node.js, Express, Hapi, MySQL, Sequelize, REST APIs, JWT |
+| **DevOps & Cloud** | Google Cloud Platform (Cloud Run, Cloud SQL, Cloud Storage), Docker |
+
+---
+
+## 📂 Folder Structure
+
+```
+personal-portfolio/
+├── public/                 # Static assets (fajrin.png, kaloriku.jpg, etc.)
+└── src/
+    └── app/
+        ├── components/     # Self-contained modular UI components
+        │   ├── Navbar/     # Dynamic Island floating navigation
+        │   ├── Hero/       # Center-photo layered top-fold section
+        │   ├── Expertise/  # Neon brand-saturated skills grid
+        │   ├── Works/      # Bento Grid project showcase & popups
+        │   ├── Footer/     # Sub-footer copyright section
+        │   └── WebGLBackground/ # GPU GLSL canvas background program
+        ├── globals.css     # CSS Variables, Design System Tokens, and Resets
+        ├── layout.tsx      # Main layout wrapper
+        ├── page.tsx        # Portfolio Page layout aggregator
+        └── page.module.css # Page wrapper styling
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
+*   Node.js (v18.0.0 or higher)
+*   npm or pnpm
 
-## Learn More
+### Installation
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/fajrinTech/Fajrin-Widianto.git
+    cd Fajrin-Widianto
+    ```
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+### Run Locally
+Start the local development server:
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Build & Export
+Compile and verify the Next.js production build:
+```bash
+npm run build
+```
+The optimized static bundle will be exported to the `.next` directory.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<div align="center">
+Designed and developed by <strong>Fajrin Widianto</strong>. © 2026.
+</div>
