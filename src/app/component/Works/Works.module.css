@@ -1,0 +1,607 @@
+.section {
+  padding-top: 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 64px;
+}
+
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tag {
+  color: var(--on-tertiary-container, #848484);
+}
+
+.header h2 {
+  color: var(--on-surface);
+}
+
+.scrollHint {
+  color: var(--on-surface-variant);
+  opacity: 0.6;
+}
+
+/* ── Bento Grid Layout ── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gutter);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 240px; /* Each row base height is 240px */
+    gap: var(--gutter);
+  }
+}
+
+/* Span helpers */
+.span12 { grid-column: span 1; }
+.span8 { grid-column: span 1; }
+.span6 { grid-column: span 1; }
+.span4 { grid-column: span 1; }
+
+@media (min-width: 768px) {
+  .span12 { grid-column: span 12; grid-row: span 1; } /* Spans 1 row (240px) */
+  .span8 { grid-column: span 8; grid-row: span 2; }   /* Spans 2 rows = 504px */
+  .span6 { grid-column: span 6; grid-row: span 2; }   /* Spans 2 rows = 504px */
+  .span4 { grid-column: span 4; grid-row: span 2; }   /* Spans 2 rows = 504px */
+}
+
+/* Base Bento Card styling */
+.bentoCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  overflow: hidden;
+  height: 100%;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  cursor: pointer;
+}
+
+/* Let hover lift cards slightly and add soft glow */
+.bentoCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Image wrapper and items */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.landscape { aspect-ratio: 16 / 9; }
+.portrait { aspect-ratio: 3 / 4; }
+.square { aspect-ratio: 1 / 1; }
+
+@media (min-width: 768px) {
+  .imageWrapper {
+    flex: 1;
+    min-height: 0;
+    aspect-ratio: auto; /* Allow image to fill the grid-row height */
+  }
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: filter 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bentoCard:hover .projectImage {
+  filter: grayscale(0%);
+  transform: scale(1.04);
+}
+
+/* Overlay for project image */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+  opacity: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 24px;
+  transition: opacity 0.4s ease;
+}
+
+.bentoCard:hover .overlay {
+  opacity: 1;
+}
+
+.viewBtn {
+  background: var(--surface-container-lowest, #ffffff);
+  color: var(--on-surface);
+  padding: 10px 24px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--outline-variant);
+  transition: all 0.3s ease;
+  pointer-events: none; /* Let the card click handle click event */
+}
+
+.bentoCard:hover .viewBtn {
+  background: var(--on-surface);
+  color: var(--surface);
+  border-color: var(--on-surface);
+}
+
+/* Project meta inside card bottom */
+.projectMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.15);
+  border-top: 1px solid var(--outline-variant);
+  gap: 16px;
+}
+
+.projectInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.projectInfo h3 {
+  color: var(--on-surface);
+  font-size: clamp(20px, 1.8vw, 24px);
+  margin: 0;
+}
+
+.projectDesc {
+  color: var(--on-surface-variant);
+  font-size: 14px;
+  margin: 0;
+}
+
+.year {
+  border: 1px solid var(--outline-variant);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  color: var(--on-surface-variant);
+  flex-shrink: 0;
+  font-size: 10px;
+}
+
+/* ── Bento CTA Card ── */
+.bentoCardInner {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
+  height: 100%;
+}
+
+.bentoContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bentoTag {
+  color: var(--on-surface-variant);
+  opacity: 0.7;
+}
+
+.bentoTitle {
+  color: var(--on-surface);
+  margin: 0;
+}
+
+.bentoActions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.bentoBtn {
+  background: var(--on-surface);
+  color: var(--surface);
+  padding: 16px 36px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.bentoBtn:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.iconCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-surface-variant);
+  font-size: 18px;
+}
+
+/* ── PREMIUM INTERACTIVE MODAL POPUPS ── */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 24px;
+}
+
+.modalCard {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  background: transparent; /* Prevent background bleeding at the top rounded corners */
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  overflow: hidden; /* Prevent scrollbar from exceeding the rounded corners */
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.modalScrollable {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Premium custom scrollbar to match the design */
+.modalScrollable::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modalScrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modalScrollable::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.modalScrollable::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(90deg);
+}
+
+.modalBanner {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .modalBanner {
+    height: 380px;
+  }
+}
+
+.modalBannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modalBannerOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--surface-container-high) 5%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.6) 100%);
+}
+
+.modalHeaderContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px;
+  color: var(--on-surface);
+}
+
+.modalTitle {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modalSub {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.modalBody {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background: var(--surface-container-high);
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .modalBody {
+    flex-direction: row;
+    gap: 48px;
+  }
+}
+
+.modalMainContent {
+  flex: 1.4;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.modalSidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--outline-variant);
+  padding: 24px;
+  border-radius: 24px;
+  height: fit-content;
+}
+
+.cblSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cblSection h4 {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--on-tertiary-container, #848484);
+  margin: 0;
+}
+
+.cblSection p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--on-surface-variant);
+  margin: 0;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metaItem label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--on-tertiary-container, #848484);
+}
+
+.metaItem span {
+  font-size: 15px;
+  color: var(--on-surface);
+}
+
+.techStackList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.techTag {
+  background: var(--surface-container);
+  color: var(--on-surface);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--outline-variant);
+  transition: all 0.25s ease;
+}
+
+.techTag:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.actionBtns {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.modalActionBtn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+.primaryAction {
+  background: var(--on-surface);
+  color: var(--surface);
+  border: 1px solid var(--on-surface);
+}
+
+.primaryAction:hover {
+  background: transparent;
+  color: var(--on-surface);
+}
+
+.secondaryAction {
+  background: transparent;
+  color: var(--on-surface);
+  border: 1px solid var(--outline);
+}
+
+.secondaryAction:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ── COMING SOON INDICATOR STYLING ── */
+.comingSoon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 64px auto 0;
+  padding: 14px 28px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  color: var(--on-surface-variant);
+  width: fit-content;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: default;
+}
+
+.comingSoon:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--on-surface);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.comingSoonDot {
+  font-size: 8px;
+  color: #10b981; /* Premium Emerald green */
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+  animation: pulse 2s infinite ease-in-out;
+  display: inline-block;
+  line-height: 1;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .modalOverlay {
+    padding: 16px;
+  }
+
+  .modalCard {
+    border-radius: 24px;
+    max-height: 85vh;
+  }
+
+  .modalBody {
+    padding: 24px 20px;
+    gap: 24px;
+  }
+
+  .modalMainContent {
+    gap: 20px;
+  }
+
+  .closeBtn {
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .modalHeaderContent {
+    padding: 24px;
+  }
+}

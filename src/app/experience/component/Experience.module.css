@@ -1,0 +1,215 @@
+.section {
+  padding: 80px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 64px;
+}
+
+.tag {
+  color: var(--on-surface-variant);
+  opacity: 0.8;
+}
+
+.timelineContainer {
+  position: relative;
+  padding-left: 32px; /* For timeline line and bullets */
+}
+
+@media (min-width: 768px) {
+  .timelineContainer {
+    padding-left: 48px;
+  }
+}
+
+.timelineLine {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 12px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    var(--outline-variant) 0%,
+    var(--outline-variant) 70%,
+    transparent 100%
+  );
+  opacity: 0.5;
+}
+
+@media (min-width: 768px) {
+  .timelineLine {
+    left: 16px;
+  }
+}
+
+.timelineList {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.timelineItem {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 992px) {
+  .timelineItem {
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+  }
+}
+
+/* Timeline Bullet */
+.timelineBullet {
+  position: absolute;
+  left: -32px;
+  top: 6px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+@media (min-width: 768px) {
+  .timelineBullet {
+    left: -48px;
+    top: 8px;
+    width: 33px;
+    height: 33px;
+  }
+}
+
+.bulletInner {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--outline-variant);
+  border: 1px solid var(--outline);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.timelineItem:hover .bulletInner {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  transform: scale(1.4);
+  box-shadow: 0 0 12px var(--primary);
+}
+
+/* Period box */
+.periodBox {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 10px;
+}
+
+.periodText {
+  color: var(--on-surface-variant);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+/* Content Card */
+.experienceCard {
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--outline-variant);
+  background: var(--glass-bg);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.experienceCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.05);
+}
+
+:global(.dark) .experienceCard:hover {
+  border-color: var(--primary);
+  box-shadow: 0 12px 32px -8px rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.roleTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--on-surface);
+  margin-bottom: 4px;
+}
+
+.companyName {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+}
+
+.jobDesc {
+  color: var(--on-surface);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding: 0;
+}
+
+.highlights li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  color: var(--on-surface-variant);
+  line-height: 1.6;
+}
+
+.bulletSymbol {
+  color: var(--on-surface);
+  font-size: 10px;
+  margin-top: 5px;
+  opacity: 0.5;
+}
+
+.techStackList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--outline-variant);
+}
+
+.techTag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 12px;
+  background-color: var(--surface-container-high);
+  color: var(--on-surface);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--outline-variant);
+}
+
+:global(.dark) .techTag {
+  background-color: var(--surface-container-low);
+  border-color: var(--outline-variant);
+}

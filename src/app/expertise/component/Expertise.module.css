@@ -1,0 +1,201 @@
+.section {
+  padding: 80px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 680px;
+  margin-bottom: 56px;
+}
+
+.headerDesc {
+  color: var(--on-surface-variant);
+}
+
+.groupsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+
+@media (min-width: 992px) {
+  .groupsContainer {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+}
+
+.groupColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.groupTitle {
+  color: var(--on-surface-variant);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--outline-variant);
+  opacity: 0.85;
+}
+
+.techStackList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.techCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--outline-variant);
+  background: var(--glass-bg);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.techCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    var(--tech-glow-shadow, rgba(255, 255, 255, 0.08)),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.techCard:hover::before {
+  opacity: 1;
+}
+
+.techCard:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: var(--tech-glow-color, var(--primary));
+  box-shadow: 0 10px 30px -10px var(--tech-glow-shadow, rgba(0, 0, 0, 0.1));
+}
+
+:global(.dark) .techCard:hover {
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 10px 30px -10px var(--tech-glow-shadow, rgba(255, 255, 255, 0.05));
+}
+
+.techIconBox {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-surface);
+  flex-shrink: 0;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.techCard:hover .techIconBox {
+  transform: scale(1.18);
+}
+
+.techInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.techName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--on-surface);
+}
+
+.techDesc {
+  font-size: 12px;
+  color: var(--on-surface-variant);
+}
+
+/* ── TABS BAR FOR MOBILE / TABLET ── */
+.tabsContainer {
+  display: none;
+  position: relative;
+  background: var(--surface-container-low);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-full);
+  padding: 4px;
+  margin-bottom: 32px;
+  gap: 4px;
+}
+
+.tabBtn {
+  position: relative;
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  color: var(--on-surface-variant);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 1;
+  text-align: center;
+}
+
+.activeTabBtn {
+  color: var(--on-surface) !important;
+}
+
+.tabLabel {
+  position: relative;
+  z-index: 2;
+}
+
+.tabIndicator {
+  position: absolute;
+  inset: 0;
+  background: var(--surface-container-high);
+  border: 1px solid var(--outline);
+  border-radius: var(--radius-full);
+  z-index: 1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+:global(.dark) .tabIndicator {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ── RESPONSIVE TABS & VISIBILITY ── */
+@media (max-width: 991px) {
+  .tabsContainer {
+    display: flex !important;
+  }
+
+  .groupTitle {
+    display: none !important;
+  }
+
+  .inactiveColumn {
+    display: none !important;
+  }
+
+  .activeColumn {
+    display: flex !important;
+  }
+}

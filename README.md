@@ -76,17 +76,18 @@ personal-portfolio/
 ├── public/                 # Static assets (fajrin.png, kaloriku.jpg, etc.)
 └── src/
     └── app/
-        ├── components/     # Self-contained modular UI components
-        │   ├── Navbar/     # Dynamic Island floating navigation
-        │   ├── Hero/       # Center-photo layered top-fold section
-        │   ├── Expertise/  # Neon brand-saturated skills grid
-        │   ├── Works/      # Bento Grid project showcase & popups
-        │   ├── Footer/     # Sub-footer copyright section
-        │   └── WebGLBackground/ # GPU GLSL canvas background program
-        ├── globals.css     # CSS Variables, Design System Tokens, and Resets
-        ├── layout.tsx      # Main layout wrapper
-        ├── page.tsx        # Portfolio Page layout aggregator
-        └── page.module.css # Page wrapper styling
+        ├── hero/component/          # Hero section component & styling
+        ├── about/component/         # About section component & styling
+        ├── expertise/component/     # Expertise/Skills grid component
+        ├── works/component/         # Bento Grid project showcase & popups
+        ├── experience/component/    # Resume & experience timeline component
+        ├── navbar/component/        # Dynamic Island floating navigation
+        ├── footer/component/        # Sub-footer copyright & social section
+        ├── webgl/component/         # GPU GLSL canvas background program
+        ├── globals.css              # CSS Variables, Design System Tokens, and Resets
+        ├── layout.tsx               # Main layout wrapper
+        ├── page.tsx                 # Portfolio Page layout aggregator
+        └── page.module.css          # Page wrapper styling
 ```
 
 ---
