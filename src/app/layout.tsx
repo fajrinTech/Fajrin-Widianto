@@ -7,6 +7,10 @@ export const metadata: Metadata = {
     'Crafting digital experiences that blend aesthetic beauty with functional precision for top-tier digital products.',
   keywords: ['UI/UX Designer', 'Frontend Developer', 'Portfolio', 'Fajrin Widianto'],
   authors: [{ name: 'Fajrin Widianto' }],
+  icons: {
+    icon: '/Untitled design (3).png',
+    apple: '/Untitled design (3).png',
+  },
   openGraph: {
     title: 'Fajrin Widianto — UI/UX Designer & Frontend Developer',
     description:
