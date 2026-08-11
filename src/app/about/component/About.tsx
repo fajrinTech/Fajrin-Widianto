@@ -55,9 +55,9 @@ export default function About() {
         {/* Left Column: Heading and Narrative */}
         <motion.div className={styles.leftCol} variants={itemVariants}>
           <span className={`label-caps ${styles.tag}`}>About Me</span>
-          <h2 className="headline-lg">Backend Specialist with a Full-Stack Mindset</h2>
+          <h2 className="headline-lg">Founder & AI Architect at THAELON</h2>
           <p className={`body-lg ${styles.narrative}`}>
-            I am a developer focused on building robust backend systems, database schemas, and scalable server architectures. While my main strength lies in backend engineering, I have the full-stack capabilities to implement high-performance frontends that bring applications to life.
+            I am a software engineer and AI architect focused on building THAELON and FANA, an AI Intelligence Platform. Combining scalable backend infrastructure, cloud architecture, and full-stack engineering to deliver high-performance digital products.
           </p>
           <div className={styles.focusGrid}>
             <div className={styles.focusItem}>

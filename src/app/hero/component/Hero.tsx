@@ -96,11 +96,11 @@ export default function Hero() {
           animate="visible"
           transition={{ delay: 0.6 } as Parameters<typeof motion.div>[0]['transition']}
         >
-          <h2 className={`headline-lg ${styles.role}`}>
-            Backend Engineer
+          <h2 className={styles.role}>
+            Founder & AI Architect at THAELON
           </h2>
           <p className={`body-md ${styles.subtitle}`}>
-            Architecting scalable APIs, secure server architectures, and database systems with full-stack integration capabilities.
+            Building FANA, an AI Intelligence Platform, with full-stack engineering, scalable cloud infrastructure, and intelligent software systems.
           </p>
           <motion.a
             href="#contact"
